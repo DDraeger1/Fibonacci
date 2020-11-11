@@ -18,6 +18,10 @@ private static long timeElapsed;
         if (nextBestNumber.compareTo(BigInteger.ZERO) == 0) {
             compare = false;
         }
+        for(int x = 0; x < 100; x++){
+        f1 = BigInteger.ZERO;
+        f2 = BigInteger.ONE;
+        result = BigInteger.ONE;
         for (int i = 0; i < 100; i++) {
             if (compare == false) {
                 System.out.println(i + 1 + ": " + result);
@@ -61,7 +65,7 @@ private static long timeElapsed;
 
                 f2 = result;
             }
-        }
+        }}
 
     }
 
