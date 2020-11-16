@@ -9,6 +9,7 @@ public class FibonacciV2 {
     private static long start;
     private static long finish;
     private static long timeElapsed;
+    private static int schritte;
 
     public static void fibboCalc(BigInteger f1, BigInteger f2, BigInteger result, BigInteger nextBestNumber) {
         boolean compare = true, fibboInit = false, done = false;
@@ -26,6 +27,7 @@ public class FibonacciV2 {
             left = 0;
             right = 100;
             fibboInit = false;
+            schritte = 0;
 
             for (int i = 0; i < 100; i++) {
 
@@ -66,28 +68,35 @@ public class FibonacciV2 {
                 BigInteger firstDistance = fibboArray[first];
                 BigInteger lastDistance = fibboArray[last];
                 firstDistance = fibboArray[100].subtract(firstDistance);
-                System.out.println("first: "+firstDistance);
+                System.out.println("first: " + firstDistance);
                 lastDistance = lastDistance.subtract(fibboArray[100]);
-                System.out.println("last: "+lastDistance);
-                
+                System.out.println("last: " + lastDistance);
+
                 if (firstDistance.compareTo(lastDistance) == 1) {
-                    System.out.println("Index: " + last + " Nummer: " + fibboArray[last] + " ist näher an " + fibboArray[100]);
+                schritte++;
+                    System.out.println("Index: " + last + " Nummer: " + fibboArray[last] + " ist näher an " + fibboArray[100] + " hat " + schritte + "schritte gebraucht.");
                 } else {
-                    System.out.println("Index: " + first + " Nummer: " + fibboArray[first] + " ist näher an " + fibboArray[100]);
+                schritte++;                    
+                    System.out.println("Index: " + first + " Nummer: " + fibboArray[first] + " ist näher an " + fibboArray[100] + " hat " + schritte + "schritte gebraucht.");
 
                 }
 
             }
             if (fibboArray[100].compareTo(fibboArray[median]) == 1) {
+                schritte++;
                 result = quicksort(fibboArray, median, last);
-
+                
             }
             if (fibboArray[100].compareTo(fibboArray[median]) == -1) {
+                schritte++;
                 result = quicksort(fibboArray, first, median);
+                
 
             }
             if (fibboArray[100].compareTo(fibboArray[median]) == 0) {
+                schritte++;
                 System.out.println(fibboArray[100] + " steht gleich mit Index: " + median + " Nummer: " + fibboArray[median]);
+
             }
 
         }
